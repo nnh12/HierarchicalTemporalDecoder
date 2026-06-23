@@ -1,0 +1,5 @@
+nathan@nathan-XPS-8950:~/new/mount/new/film$ sudo python3 inference.py     --label-path /home/nathan/new/mount/strain_vit_project/src/auto_regressive_transformer/data/samples/sample0/label.npy     --num-frames 500     --visualize
+Traceback (most recent call last):
+  File "/home/nathan/new/mount/new/film/inference.py", line 4, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
