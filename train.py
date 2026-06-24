@@ -7,16 +7,20 @@ from torch.utils.data import DataLoader, random_split
 from dataset import ImageSeriesDataset
 from model import HierarchicalTemporalDecoder
 
-DATA_DIR = os.path.expanduser(
-    "~/new/mount/strain_vit_project/src/auto_regressive_transformer/data/samples/sample0"
-)
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 
 def train(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
-    dataset = ImageSeriesDataset(DATA_DIR, max_frames=args.max_frames)
+    sample_dirs = sorted(
+        os.path.join(DATA_DIR, d) for d in os.listdir(DATA_DIR)
+        if os.path.isdir(os.path.join(DATA_DIR, d))
+        and os.path.exists(os.path.join(DATA_DIR, d, "label.npy"))
+    )
+    print(f"Sample directories: {sample_dirs}")
+    dataset = ImageSeriesDataset(sample_dirs, max_frames_per_sample=args.max_frames)
     print(f"Dataset size: {len(dataset)} frames")
 
     val_size = max(1, int(0.1 * len(dataset)))
