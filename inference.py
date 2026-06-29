@@ -108,7 +108,7 @@ def _visualize_bands(band_frames, out_dir, n_show=8):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ckpt", type=str, default="best_model.pt")
+    parser.add_argument("--ckpt", type=str, default="best_model_1.pt")
     parser.add_argument("--label-path", type=str, required=True)
     parser.add_argument("--num-frames", type=int, default=500)
     parser.add_argument("--output-h", type=int, default=300)

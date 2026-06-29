@@ -2,3 +2,5 @@ predicted_frames/
 data/
 __pycache__/
 sample0/
+heatmap_samples/
+error.txt
